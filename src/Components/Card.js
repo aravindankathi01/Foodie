@@ -1,5 +1,6 @@
 import React from "react";
 import { cloudinary } from "../constants/config";
+import { Link } from "react-router-dom";
 const Card = ({ info }) => {
   // console.log(">>", info);
   const {
@@ -8,16 +9,16 @@ const Card = ({ info }) => {
     cloudinaryImageId,
     locality,
     cuisines,
+    id,
     aggregatedDiscountInfoV3,
   } = info;
   const backgroundImageStyle = {
     backgroundImage: `url(${cloudinary}${cloudinaryImageId})`,
   };
   return (
-    <div className='h-[16rem] w-56 box-border flex flex-col shadow-lg rounded-lg bg-white transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:scale-90'>
-      {/* <div
-        className='object-cover h-1/2 rounded-xl'
-        style={backgroundImageStyle}></div> */}
+    <Link
+      to={"Menu/" + id}
+      className='h-[16rem] w-56 box-border flex flex-col rounded-lg bg-white transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:scale-90'>
       <img
         className='object-cover h-3/5 w-full rounded-xl'
         src={cloudinary + cloudinaryImageId}
@@ -45,7 +46,7 @@ const Card = ({ info }) => {
         </p>
         <p className='text-slate-500 font-normal truncate'>{locality}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

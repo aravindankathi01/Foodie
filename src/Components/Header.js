@@ -10,15 +10,12 @@ const Header = ({ children }) => {
             src='https://i.pinimg.com/280x280_RS/f7/69/46/f769464ec1a6095136222d1ab9485f03.jpg'
             alt='not found'></img>
         </Link>
-        <p className='text-slate-600  hover:text-orange-500'>
+        <p className='text-slate-800 font-semibold hover:text-orange-500'>
           Hyderabad,Telangana,India
         </p>
       </div>
       <div className='flex justify-evenly basis-1/2 text-slate-800 font-semibold'>
         <div className='flex gap-1 hover:text-orange-500 active:text-orange-700 focus:outline-none focus:ring focus:ring-violet-300'>
-          <Link to='/search'>
-            <p>Search</p>
-          </Link>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -32,6 +29,9 @@ const Header = ({ children }) => {
               d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
             />
           </svg>
+          <Link to='/search'>
+            <p>Search</p>
+          </Link>
         </div>
         <div className='flex gap-1 hover:text-orange-500'>
           <svg
