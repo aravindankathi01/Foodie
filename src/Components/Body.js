@@ -10,18 +10,13 @@ const Body = () => {
   useEffect(() => {
     fetchRestaurants();
   }, []);
+
   async function fetchRestaurants() {
     try {
       const response = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const data = await response.json();
-      // console.log(">>> entire", data);
-      // setRestaurantsData(
-      //   data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-      //     ?.restaurants
-      // );
-
       const filtered = data?.data?.cards.filter((item) => {
         if (
           item?.card?.card?.gridElements?.infoWithStyle["@type"] ===
@@ -44,9 +39,9 @@ const Body = () => {
   }
   // console.log(">>>>>", restaurantsData);
   return (
-    <div className='bg-white h-full'>
-      <div className='flex justify-center items-center'>
-        <div className='grid grid-cols-2 lg:grid-cols-4 w-3/4 gap-y-8 gap-x-2 mt-4'>
+    <div className='bg-white w-full'>
+      <div className='flex justify-center items-center mt-5 w-full'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-3/4 gap-8 place-content-center place-items-center'>
           {restaurantsData === null || restaurantsData === undefined ? (
             <Shimmer />
           ) : (

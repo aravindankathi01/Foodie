@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { cloudinary, preSearchCloudinary } from "../constants/config";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -110,7 +111,13 @@ const Search = () => {
         {suggestions &&
           suggestions.map((item, index) => {
             return (
-              <div
+              <Link
+                to={
+                  "/results?query=" +
+                  item.text.replace(" ", "+") +
+                  "&type=" +
+                  item.type
+                }
                 className='flex w-full h-24 items-center gap-3 hover:bg-slate-100'
                 key={index}>
                 <img
@@ -121,7 +128,7 @@ const Search = () => {
                   <p>{item.text}</p>
                   <p>{item.type}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>

@@ -47,11 +47,11 @@ const Menu = () => {
   }
 
   return (
-    <div className='w-full border-4 flex flex-col justify-center items-center'>
-      <div className='grid place-items-start mt-8 w-7/12'>
+    <div className='w-full flex flex-col justify-center items-center'>
+      <div className='grid place-items-start mt-8 w-8/12'>
         {menu && (
-          <div className='border-dotted border-b-2 border-b-slate-300 w-11/12 h-28 m-2 p-2 box-border flex justify-between'>
-            <div>
+          <div className='border-dotted border-b-2 border-b-slate-300 w-11/12 h-28 p-2 flex md:flex-row md:justify-between flex-col justify-center items-center box-content pb-5'>
+            <div className='text-center md:text-start'>
               <h1 className='text-2xl font-bold text-slate-900 mb-2'>{name}</h1>
               <h1 className='text-md text-slate-900'>{areaName}</h1>
               <p className='text-sm text-slate-700 font-normal'>

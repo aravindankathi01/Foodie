@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Search from "./Components/Search";
 import Body from "./Components/Body";
 import Menu from "./Components/Menu";
+import Cart from "./Components/Cart";
+import SearchResults from "./Components/SearchResults";
 
 const appRouter = createBrowserRouter([
   {
@@ -22,8 +24,16 @@ const appRouter = createBrowserRouter([
         element: <Search />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
         path: "/Menu/:id",
         element: <Menu />,
+      },
+      {
+        path: "/results",
+        element: <SearchResults />,
       },
     ],
   },

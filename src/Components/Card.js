@@ -18,9 +18,9 @@ const Card = ({ info }) => {
   return (
     <Link
       to={"Menu/" + id}
-      className='h-[16rem] w-56 box-border flex flex-col rounded-lg bg-white transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:scale-90'>
+      className='h-[16rem] w-full box-border flex flex-col rounded-lg bg-white transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:scale-90'>
       <img
-        className='object-cover h-3/5 w-full rounded-xl'
+        className='object-fill h-3/5 w-full rounded-xl'
         src={cloudinary + cloudinaryImageId}
         alt='not found'></img>
       <div className='pt-1 pl-2'>
@@ -30,9 +30,9 @@ const Card = ({ info }) => {
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
-            strokeWidth={1.5}
+            strokeWidth={0}
             stroke='currentColor'
-            className='w-6 h-6 fill-orange-500 stroke-orange-500'>
+            className='w-6 h-6 fill-orange-500 p-1'>
             <path
               strokeLinecap='round'
               strokeLinejoin='round'

@@ -4,7 +4,7 @@ import CategoryItems from "./CategoryItems";
 const MenuAccordian = ({ title, itemCards, displayItems, setDisplayIndex }) => {
   // const [displayItems, setDisplayItems] = useState(true);
   return (
-    <div className='w-11/12 m-2 p-2 box-border flex justify-between'>
+    <div className='w-11/12 p-2 box-border flex justify-between'>
       <div className='w-full flex flex-col'>
         <div
           className='flex justify-between w-full cursor-pointer'
