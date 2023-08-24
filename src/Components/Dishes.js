@@ -1,21 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import Dish from "./Dish";
+import {
+  compareItemsByPrice,
+  compareItemsByPriceHL,
+  sortDeliveryTime,
+  ratingHL,
+} from "../utils/filter";
 
 const Dishes = ({ dishesData }) => {
+  const [filteredDishesData, setFilteredDishesData] = useState(dishesData);
+
   return (
-    <div className='lg:w-8/12 w-10/12 grid grid-cols-1 lg:grid-cols-2 bg-slate-100 mt-4'>
-      {dishesData.map((dish, index) => {
-        if (index !== 0) {
-          return (
-            <Dish
-              key={dish?.card?.card?.info?.id}
-              dishInfo={dish?.card?.card?.info}
-              restaurantInfo={dish?.card?.card?.restaurant?.info}
-            />
-          );
-        }
-      })}
-    </div>
+    <>
+      <div className='flex flex-row justify-center gap-3 text-slate-500 font-medium text-sm lg:w-8/12 w-10/12 flex-wrap'>
+        <button
+          onClick={() => {
+            const slicedArray = filteredDishesData.slice(1);
+            slicedArray.sort(compareItemsByPrice);
+            setFilteredDishesData(slicedArray);
+          }}
+          className='border-2 border-slate-100 bg-slate-50 rounded-lg p-1'>
+          Price(High-Low)
+        </button>
+        <button className='border-2 border-slate-100 bg-slate-50 rounded-lg p-1'>
+          Rated 4+
+        </button>
+        <button
+          onClick={() => {
+            const slicedArray = filteredDishesData.slice(1);
+            slicedArray.sort(compareItemsByPriceHL);
+            setFilteredDishesData(slicedArray);
+          }}
+          className='border-2 border-slate-100 bg-slate-50 rounded-lg p-1'>
+          Price(Low-High)
+        </button>
+        <button
+          onClick={() => {
+            const slicedArray = filteredDishesData.slice(1);
+            slicedArray.sort(sortDeliveryTime);
+            setFilteredDishesData(slicedArray);
+          }}
+          className='border-2 border-slate-100 bg-slate-50 rounded-lg p-1'>
+          Delivery Time
+        </button>
+        <button
+          onClick={() => {
+            const slicedArray = filteredDishesData.slice(1);
+            slicedArray.sort(ratingHL);
+            setFilteredDishesData(slicedArray);
+          }}
+          className='border-2 border-slate-100 bg-slate-50 rounded-lg p-1'>
+          Rating(High-Low)
+        </button>
+      </div>
+      <div className='lg:w-8/12 w-10/12 grid grid-cols-1 lg:grid-cols-2 bg-slate-100 mt-4'>
+        {filteredDishesData.map((dish, index) => {
+          if (index !== 0) {
+            return (
+              <Dish
+                key={dish?.card?.card?.info?.id}
+                dishInfo={dish?.card?.card?.info}
+                restaurantInfo={dish?.card?.card?.restaurant?.info}
+              />
+            );
+          }
+        })}
+      </div>
+    </>
   );
 };
 

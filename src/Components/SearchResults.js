@@ -22,9 +22,10 @@ const SearchResults = () => {
     fetchDishes(searchParams.get("query"));
   }, []);
   useEffect(() => {
-    console.log(">>>>Restrau Data", restaurantsData);
-    // console.log("Dishes>>>>", dishesData);
+    // console.log(">>>>Restrau Data", restaurantsData);
+    console.log("Dishes>>>>", dishesData);
   }, [restaurantsData, dishesData]);
+
   const [searchParams] = useSearchParams();
 
   async function fetchRestaurants(value) {
@@ -33,7 +34,7 @@ const SearchResults = () => {
         `https://www.swiggy.com/dapi/restaurants/search/v3?lat=17.385044&lng=78.486671&str=${value}&trackingId=04cf99d2-e6ef-f1a4-facb-f02bbc5c486a&submitAction=ENTER&queryUniqueId=a8327500-b2c3-5005-118c-5d5cdc19be77`
       );
       const data = await response.json();
-      console.log("Restra>>>>", data);
+      // console.log("Restra>>>>", data);
       if (data?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards) {
         setFlag(false);
         setRestaurantsData(

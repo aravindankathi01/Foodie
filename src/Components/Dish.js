@@ -13,7 +13,7 @@ const Dish = ({ dishInfo, restaurantInfo }) => {
           <p className='text-sm font-bold text-gray-500'>
             By {restaurantInfo?.name}
           </p>
-          <div className='flex'>
+          <div className='flex items-center'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
@@ -29,6 +29,10 @@ const Dish = ({ dishInfo, restaurantInfo }) => {
             </svg>
             <p className='text-gray-500 text-sm font-medium'>
               {restaurantInfo?.avgRating}
+            </p>
+            <p className='border-[1px] h-[2px] w-[2px] rounded-full border-slate-600 mt-2 mx-[7px] hidden md:inline'></p>
+            <p className='truncate text-sm font-medium text-gray-500'>
+              {restaurantInfo?.sla?.slaString}
             </p>
           </div>
         </div>
