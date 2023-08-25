@@ -73,7 +73,7 @@ const SearchResults = () => {
   return (
     <>
       <div className='w-full flex flex-col justify-center items-center mt-4'>
-        <div className='flex flex-row justify-center items-center gap-2 bg-white w-full py-8 sticky top-20'>
+        <div className='flex flex-row justify-center items-center gap-2 bg-white w-full py-8 sticky top-20 z-40'>
           <button
             onClick={() => {
               !toggleRD && setToggleRD(!toggleRD);

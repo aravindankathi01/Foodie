@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { cloudinary } from "../constants/config";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const Dish = ({ dishInfo, restaurantInfo }) => {
   const { name, price, imageId, description, defaultPrice } = dishInfo;
-
+  const dispatch = useDispatch();
   return (
     <div className='shadow-lg mx-3 mt-6 bg-white flex flex-col rounded-lg'>
       <Link
@@ -30,7 +32,7 @@ const Dish = ({ dishInfo, restaurantInfo }) => {
             <p className='text-gray-500 text-sm font-medium'>
               {restaurantInfo?.avgRating}
             </p>
-            <p className='border-[1px] h-[2px] w-[2px] rounded-full border-slate-600 mt-2 mx-[7px] hidden md:inline'></p>
+            <p className='border-[1px] h-[2px] w-[2px] rounded-full border-slate-600 mt-2 mx-[7px]'></p>
             <p className='truncate text-sm font-medium text-gray-500'>
               {restaurantInfo?.sla?.slaString}
             </p>
@@ -60,11 +62,18 @@ const Dish = ({ dishInfo, restaurantInfo }) => {
             {description}
           </p>
         </div>
-        <div className='basis-2/6 flex items-center justify-center'>
+        <div className='basis-2/6 flex items-center justify-center relative h-28'>
           <img
             src={cloudinary + imageId}
             alt='Dish'
             className='h-28 w-32 rounded-lg shadow-xl object-fill'></img>
+          <span
+            onClick={() => {
+              dispatch(addItem(dishInfo));
+            }}
+            className='left-auto right-auto text-xs font-bold absolute border-2 border-slate-200 bg-white text-orange-500 -bottom-2 rounded-md hover:shadow-lg cursor-pointer h-8 w-14 flex justify-center items-center'>
+            ADD+
+          </span>
         </div>
       </div>
     </div>
