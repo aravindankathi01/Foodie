@@ -100,7 +100,7 @@ const Search = () => {
                       fetchResults(item.entityId.split("=")[1]);
                     }}>
                     <img
-                      className='object-fit cursor-pointer'
+                      className='object-fit cursor-pointer h-40 w-36'
                       src={preSearchCloudinary + item?.imageId}
                       alt='notfound'></img>
                   </div>
