@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MenuAccordian from "./MenuAccordian";
-import Shimmer from "./shimmer";
+// import Shimmer from "./shimmer";
 
 const Menu = () => {
   const { id } = useParams();
@@ -9,6 +9,8 @@ const Menu = () => {
   const [categories, setCategories] = useState(null);
   const [displayItems, setDisplayItems] = useState(true);
   const [displayIndex, setDisplayIndex] = useState(0);
+
+  const [userRating, setUserRating] = useState("");
 
   useEffect(() => {
     fetchMenuData();
@@ -50,7 +52,7 @@ const Menu = () => {
     <div className='w-full flex flex-col justify-center items-center'>
       <div className='grid place-items-start mt-8 w-8/12'>
         {menu && (
-          <div className='border-dotted border-b-2 border-b-slate-300 w-11/12 h-28 p-2 flex md:flex-row md:justify-between flex-col justify-center items-center box-content pb-5'>
+          <div className='border-dotted border-b-2  border-b-slate-300 w-11/12 h-28 p-2 flex md:flex-row md:justify-between flex-col justify-center items-center box-content pb-5'>
             <div className='text-center md:text-start'>
               <h1 className='text-2xl font-bold text-slate-900 mb-2'>{name}</h1>
               <h1 className='text-md text-slate-900'>{areaName}</h1>
@@ -58,7 +60,7 @@ const Menu = () => {
                 {cuisines.join(",")}
               </p>
             </div>
-            <div className='border-2 border-slate-100 h-20 w-24 rounded-lg shadow-lg'>
+            <div className='border-2 border-slate-100 h-auto w-auto rounded-lg shadow-lg'>
               <div className='text-orange-500 font-medium text-lg border-b-2 border-b-slate-100 h-1/2 w-3/4 m-auto flex items-center justify-center'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -78,9 +80,25 @@ const Menu = () => {
               <p className='text-slate-400 font-medium text-sm flex items-center justify-center'>
                 {totalRatingsString}
               </p>
+              <div>
+                <label for='Rating' className='font-semibold p-2 text-lg'>
+                  Rate now:
+                </label>
+                <input
+                  className='px-2 border border-slate-300'
+                  type='number'
+                  id='Rating'
+                  name='Rating'
+                  min='1'
+                  value={userRating}
+                  onChange={(e) => setUserRating(e.target.value)}
+                  max='5'></input>
+              </div>
             </div>
           </div>
         )}
+        {/* <div>hello</div> */}
+        {/* <div className='m-32'></div> */}
         {categories &&
           categories.map((item, index) => {
             return (
